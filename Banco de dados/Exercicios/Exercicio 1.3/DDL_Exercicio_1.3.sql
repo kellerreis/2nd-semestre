@@ -1,0 +1,69 @@
+-- Exercicio 1.3 Clinica vet
+
+--DDL - Criando o banco de dados
+
+CREATE DATABASE Exercicio_1_3
+
+--usar o banco criado
+
+use Exercicio_1_3
+
+--criar tabelas
+
+CREATE TABLE Clinica
+(
+	IdClinica INT PRIMARY KEY IDENTITY,
+	Endereco VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Dono
+(
+	IdDono INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR(20) NOT NULL
+)
+CREATE TABLE TipoPet
+(
+	IdTipoPet INT PRIMARY KEY IDENTITY,
+	Descricao VARCHAR(50) NOT NULL
+)
+CREATE TABLE Raca
+(
+	IdRaca INT PRIMARY KEY IDENTITY,
+	Descricao VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Veterinario
+(
+	IdVeterinario INT PRIMARY KEY IDENTITY,
+	IdClinica INT FOREIGN KEY REFERENCES Clinica(IdClinica) NOT NULL,
+	Nome VARCHAR(20) NOT NULL,
+	CRMV VARCHAR(10) NOT NULL UNIQUE
+	)
+
+CREATE TABLE Pet
+(
+	IdPet INT PRIMARY KEY IDENTITY,
+	IdTipoPet INT FOREIGN KEY REFERENCES TipoPet(IdTipoPet) NOT NULL,
+	IdRaca INT FOREIGN KEY REFERENCES Raca(IdRaca) NOT NULL,
+	IdDono INT FOREIGN KEY REFERENCES Dono(IdDono) NOT NULL,
+	Nome VARCHAR(70) NOT NULL,
+	DataDeNascimento DATE NOT NULL
+	)
+
+CREATE TABLE Atendimentos
+(
+	IdAtendimentos INT PRIMARY KEY IDENTITY,
+	IdVeterinario INT FOREIGN KEY REFERENCES Veterinario(IdVeterinario) NOT NULL,
+	IdPet INT FOREIGN KEY REFERENCES Pet(IdPet) NOT NULL,
+	Descricao VARCHAR(70),
+	DataAtendimento DATE NOT NULL
+	)
+
+
+	SELECT * FROM Clinica
+	SELECT * FROM Veterinario
+	SELECT * FROM Atendimentos
+	SELECT * FROM Pet
+	SELECT * FROM TipoPet
+	SELECT * FROM Raca
+	SELECT * FROM Dono

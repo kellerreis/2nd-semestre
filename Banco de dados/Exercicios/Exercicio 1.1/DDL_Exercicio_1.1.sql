@@ -1,0 +1,37 @@
+-- DDL - Criar banco e tabela
+
+--criar um banco de dados
+CREATE DATABASE Exercicio_1_1;
+
+-- usar o banco criado
+USE Exercicio_1_1;
+
+-- Criar tabelas
+
+CREATE TABLE Pessoa
+(
+	IdPessoa INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR(20) NOT NULL,
+	Cnh VARCHAR(11) NOT NULL UNIQUE
+)
+
+CREATE TABLE Telefone
+(
+	IdTelefone INT PRIMARY KEY IDENTITY,
+	IdPessoa INT FOREIGN KEY REFERENCES Pessoa(IdPessoa) NOT NULL,
+	Numero VARCHAR(15) NOT NULL UNIQUE
+)
+
+CREATE TABLE Email
+(
+	IdEmail INT PRIMARY KEY IDENTITY,
+	IdPessoa INT FOREIGN KEY REFERENCES Pessoa(IdPessoa) NOT NULL,
+	Endereco VARCHAR(30) NOT NULL UNIQUE
+)
+
+
+
+-- USADO PRA CONFERIR SE ESTA CORRETO
+SELECT * FROM Pessoa
+SELECT * FROM Telefone
+SELECT * FROM Email

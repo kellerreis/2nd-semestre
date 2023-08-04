@@ -51,5 +51,12 @@ CREATE TABLE Aluguel
 	IdAluguel INT PRIMARY KEY IDENTITY,
 	IdVeiculo INT FOREIGN KEY REFERENCES Veiculo(IdVeiculo) NOT NULL,
 	IdCliente INT FOREIGN KEY REFERENCES Cliente(IdCliente) NOT NULL,
-	Protocolo VARCHAR(7) NOT NULL UNIQUE
+	Protocolo VARCHAR(7) NOT NULL UNIQUE,
+	Inicio_contrato DATE NOT NULL,
+	Fim_contrato DATE NOT NULL
 	)
+
+
+
+
+	select * from Aluguel

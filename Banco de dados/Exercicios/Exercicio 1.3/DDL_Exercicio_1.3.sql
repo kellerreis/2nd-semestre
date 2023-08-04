@@ -1,4 +1,4 @@
--- Exercicio 1.3 Clinica vet
+ -- Exercicio 1.3 Clinica vet
 
 --DDL - Criando o banco de dados
 
